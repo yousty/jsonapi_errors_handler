@@ -43,7 +43,7 @@ module JsonapiErrorsHandler
     config = JsonapiErrorsHandler::Configuration.instance
     raise error unless config.handle_unexpected?
 
-    notify_handle_unexpected_error(error) if respond_to?(:notify_handle_unexpected_error)
+    notify_handle_unexpected_error(error) if respond_to?(:notify_handle_unexpected_error, true)
 
     render_error(::JsonapiErrorsHandler::Errors::StandardError.new)
   end
